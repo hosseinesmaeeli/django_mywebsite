@@ -10,5 +10,5 @@ class  employee:
         print('last name : ', self.l_name)   
         print("salary : ",self.salary)    
       
-p = employee('hossein','esmaeeli')  
+p = employee('hossein','esmaeeli123')  
 p.print_salary()        
