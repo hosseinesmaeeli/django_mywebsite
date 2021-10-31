@@ -13,10 +13,10 @@ from django.shortcuts import render
 #     return HttpResponse ('<h1>this is home page</h1>')
 
 def index_view(request) :
-    return render(request,"index.html")
+    return render(request,"website/index.html")
 
 def contacts_viw(request) :
-    return render(request,"website/contacts.html")    
+    return render(request,"website/contact.html")    
 
 def about_view(request) :
-    return render(request,"about.html")
+    return render(request,"website/about.html")
