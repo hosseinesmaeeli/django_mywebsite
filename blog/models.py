@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 
 class Post(models.Model):
-    # image =
+    image =models.ImageField(upload_to='blog/',default='blog/default.jpg')
+    #'blog/' means in media folder we have blog file. we must make media folder
     author = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
     # use set_nll to set null for deleted posts
     # null=true means : can be empty
