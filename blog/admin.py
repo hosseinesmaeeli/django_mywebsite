@@ -1,7 +1,7 @@
 from django.contrib import admin
 # Register your models here.
 
-from blog.models import Post
+from blog.models import Post,category
 class ostAdmin(admin.ModelAdmin) :
     date_hierarchy = 'updated_date'
     # fields = ('title', 'content')
@@ -9,4 +9,6 @@ class ostAdmin(admin.ModelAdmin) :
     list_filter = ('status','author',)
     search_fields = ['title','content']
 
+
+admin.site.register(category)
 admin.site.register(Post, ostAdmin)
