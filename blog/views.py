@@ -13,11 +13,11 @@ def blog_single(request,pid) :
     context={'post': post}
     return render(request,"blog/blog-single.html",context)    
 
-# def test(request) :
-#     posts= Post.objects.all()
-#     # posts= Post.objects.filter(status=0)
-#     context={'posts': posts}
-#     return render(request,"blog/test.html",context)    
+def test(request) :
+    posts= Post.objects.all()
+    # # posts= Post.objects.filter(status=0)
+    context={'posts': posts}
+    return render(request,"blog/test.html",context)    
 
 
 # def test(request, name,famili_name) :
@@ -25,8 +25,8 @@ def blog_single(request,pid) :
 #     context={'name': name, 'famili_name' : famili_name}
 #     return render(request,"blog/test.html",context)
 
-def test(request, pid) :
-    # post= Post.objects.get(id=pid)
-    post = get_object_or_404(Post, pk=pid)
-    context={'post': post}
-    return render(request,"blog/test.html",context)
+# def test(request, pid) :
+#     # post= Post.objects.get(id=pid)
+#     post = get_object_or_404(Post, pk=pid)
+#     context={'post': post}
+#     return render(request,"blog/test.html",context)

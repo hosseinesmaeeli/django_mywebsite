@@ -11,7 +11,7 @@ urlpatterns = [
     path('blog/<int:pid>',blog_single, name='single'),
     # path('blog/blog_single',blog_single, name='single'),
 
-    # path('blog/test',test, name='test'),
+    path('blog/test',test, name='test'),
     # path('<str:name>/famili/<str:famili_name>',test, name='test')
-    path('post-<int:pid>',test, name='test')
+    # path('post-<int:pid>',test, name='test')
    ]
