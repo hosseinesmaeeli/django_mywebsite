@@ -10,7 +10,26 @@
 </head>
 
 <body>
-    {% function 2 %}
+
+    <p>{% totalposts %}</p>
+
+
+    <p>{% totalposts as tp%}</p>
+    <p>tp : {{tp}}</p>
+
+
+   
+        {% for post in posts %}
+    <p>{{ post }}</p>
+    {% endfor %}
+
+    </p>
+
+
+
+
+
+
     <!-- {{posts}}
 
     {% for post in posts %}
