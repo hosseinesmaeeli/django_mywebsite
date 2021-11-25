@@ -27,3 +27,9 @@ def snippet(value,arg=50) :
 def popularposts():
     posts= Post.objects.filter(status=1).order_by('published_date')[:1] #for end post
     return {'posts':posts}
+
+
+@register.inclusion_tag('blog/blog-popular-posts.html')
+def latestposts(arg=3):
+    posts= Post.objects.filter(status=1).order_by('published_date')[:arg] #for end post
+    return {'posts':posts}    
