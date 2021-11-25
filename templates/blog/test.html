@@ -20,13 +20,17 @@
 
    
         {% for post in posts %}
-    <p>{{ post }}</p>
+    <p>{{ post}}</p>
+    {% endfor %}
+<h2>
+    </p>
+
+    {% for post in posts %}
+    <p>{{ post.content| snippet:20}}</p>
     {% endfor %}
 
     </p>
-
-
-
+</h2>
 
 
 
