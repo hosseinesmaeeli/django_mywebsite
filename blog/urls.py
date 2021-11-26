@@ -16,5 +16,8 @@ urlpatterns = [
     # path('post-<int:pid>',test, name='test')
 
 
-    path('category/<str:cat_name>',blog_category, name='category'),
+    path('category/<str:cat_name>',blog_index, name='category'),
+
+    path('author/<str:author_username>',blog_index, name='author'),
+
    ]
