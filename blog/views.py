@@ -2,9 +2,11 @@ from django.shortcuts import render, get_object_or_404
 from blog.models import Post
 
 # Create your views here.
-def blog_index(request) :
+def blog_index(request,cat_name=None) :
     posts= Post.objects.filter(status=1)
+    if cat_name :
     # context={'content':'helooooo. My name is Hossein'}
+        posts= posts.filter(category__name= cat_name)
     context={'posts': posts}
     return render(request,"blog/blog-home.html",context)
 
