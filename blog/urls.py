@@ -20,4 +20,6 @@ urlpatterns = [
 
     path('author/<str:author_username>',blog_index, name='author'),
 
+    path('blog/search/',blog_search, name='search'),
+
    ]
