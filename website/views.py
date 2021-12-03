@@ -3,6 +3,7 @@ from django.shortcuts import render
 from website.models import Contact
 from django.http import HttpResponse,JsonResponse
 from website.forms import NameForm,ContactForm,NewsletterForm
+from django.contrib import messages
 # from django.http import HttpResponse , JsonResponse
 
 # def http_test(request) :
@@ -23,6 +24,10 @@ def contacts_viw(request) :
         form= ContactForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.add_message(request,messages.SUCCESS,'Your ticket submited SUCSESSFULL' )
+            
+        else : 
+            messages.add_message(request,messages.ERROR,'Your ticket didnt submited SUCSESSFULL' )    
     form=ContactForm()
     return render(request,"website/contact.html",{'form':form})    
 
