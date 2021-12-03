@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from website.models import Contact
 from django.http import HttpResponse,JsonResponse
-from website.forms import NameForm
+from website.forms import NameForm,ContactForm
 # from django.http import HttpResponse , JsonResponse
 
 # def http_test(request) :
@@ -46,17 +46,33 @@ def about_view(request) :
     return render(request,"test.html",{})    
 
 
+# def test_view(request) :
+#     if request.method=='POST' :
+#         form=NameForm(request.POST)
+#         if form.is_valid() :
+#             name=form.cleaned_data['name']
+#             subject=form.cleaned_data['subject']
+#             email=form.cleaned_data['email']
+#             message=form.cleaned_data['message']
+#             print(name,subject,email,message)
+#             return HttpResponse('done')
+#         else :
+#             return HttpResponse ('not valid')  
+#     form= NameForm()
+#     return render(request,'test.html',{'form': form})    
+
 def test_view(request) :
     if request.method=='POST' :
-        form=NameForm(request.POST)
+        form=ContactForm(request.POST)
         if form.is_valid() :
-            name=form.cleaned_data['name']
-            subject=form.cleaned_data['subject']
-            email=form.cleaned_data['email']
-            message=form.cleaned_data['message']
-            print(name,subject,email,message)
+            # name=form.cleaned_data['name']
+            # subject=form.cleaned_data['subject']
+            # email=form.cleaned_data['email']
+            # message=form.cleaned_data['message']
+            # print(name,subject,email,message)
+            form.save()
             return HttpResponse('done')
         else :
             return HttpResponse ('not valid')  
-    form= NameForm()
-    return render(request,'test.html',{'form': form})    
+    form= ContactForm()
+    return render(request,'test.html',{'form': form})        
