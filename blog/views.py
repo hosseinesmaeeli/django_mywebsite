@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from blog.models import Post
 from django.core.paginator import PageNotAnInteger, Paginator,EmptyPage,PageNotAnInteger
 
+
 # Create your views here.
 
 # def blog_index(request,cat_name=None, author_username=None) :
@@ -77,3 +78,6 @@ def blog_search(request) :
 
     context={'posts': posts}
     return render(request,"blog/blog-home.html",context)
+
+
+          

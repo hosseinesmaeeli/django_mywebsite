@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="{% url 'website:test' %}" method="POST">
+    <!-- <form action="{% url 'website:test' %}" method="POST">
     {% csrf_token %} 
     <label>name:</label>
     <input name="name" type="text" placeholder=""><br>
@@ -18,13 +18,18 @@
     <label>subject:</label>
     <input name="subject" type="text" placeholder=""><br>
     <label>messege:</label>
-    <input name="messege" type="text" placeholder=""><br>
-
-    
-    <button type="submit">submit</button>
+    <input name="messege" type="text" placeholder=""><br> -->
+    <!-- <button type="submit">submit</button>
 
 
+</form> -->
+    <form action="{% url 'website:test' %}" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">submit</button>
     </form>
+
+
 </body>
 
 </html>

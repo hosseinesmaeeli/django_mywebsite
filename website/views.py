@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from website.models import Contact
+from django.http import HttpResponse,JsonResponse
+from website.forms import NameForm
 # from django.http import HttpResponse , JsonResponse
 
 # def http_test(request) :
@@ -21,7 +23,7 @@ def contacts_viw(request) :
 def about_view(request) :
     return render(request,"website/about.html")
 
-def test_view(request) :
+# def test_view(request) :
     if request.method == "POST" :
     #     print(request.POST.get('name')) 
     #     print ("post")
@@ -42,3 +44,19 @@ def test_view(request) :
 
   
     return render(request,"test.html",{})    
+
+
+def test_view(request) :
+    if request.method=='POST' :
+        form=NameForm(request.POST)
+        if form.is_valid() :
+            name=form.cleaned_data['name']
+            subject=form.cleaned_data['subject']
+            email=form.cleaned_data['email']
+            message=form.cleaned_data['message']
+            print(name,subject,email,message)
+            return HttpResponse('done')
+        else :
+            return HttpResponse ('not valid')  
+    form= NameForm()
+    return render(request,'test.html',{'form': form})    
