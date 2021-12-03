@@ -1,7 +1,8 @@
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from website.models import Contact
 from django.http import HttpResponse,JsonResponse
-from website.forms import NameForm,ContactForm
+from website.forms import NameForm,ContactForm,NewsletterForm
 # from django.http import HttpResponse , JsonResponse
 
 # def http_test(request) :
@@ -81,3 +82,12 @@ def test_view(request) :
             return HttpResponse ('not valid')  
     form= ContactForm()
     return render(request,'test.html',{'form': form})        
+
+def newsletter_view(request) :
+    if request.method=='POST' :
+        form=NewsletterForm(request.POST)
+        if form.is_valid() :
+            form.save()
+            return HttpResponseRedirect  ('/')  
+        else :
+            return HttpResponseRedirect  ('/')  
