@@ -18,7 +18,12 @@ def index_view(request) :
     return render(request,"website/index.html")
 
 def contacts_viw(request) :
-    return render(request,"website/contact.html")    
+    if request.method =='POST' :
+        form= ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+    form=ContactForm()
+    return render(request,"website/contact.html",{'form':form})    
 
 def about_view(request) :
     return render(request,"website/about.html")
