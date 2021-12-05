@@ -1,5 +1,5 @@
 from django import template
-from blog.models import Post, category
+from blog.models import Post, category,Comment
 from blog.models import category
 
 register = template.Library()
@@ -49,3 +49,9 @@ def postcategories():
 def blog_search():
     posts= Post.objects.filter(status=1).order_by('published_date')[:1] #for end post
     return {'posts':posts}
+
+@register.simple_tag(name="comments_count")  
+def function(pid) :
+    post= Post.objects.get(pk=pid)
+    return Comment.objects.filter(post=post.id,approved=True).count()
+    context = {'post':post, 'comments':comments}
