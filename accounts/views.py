@@ -1,6 +1,6 @@
 from django.contrib import auth
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import AuthenticationForm
 # Create your views here.
 def login_view(request) :
@@ -20,8 +20,10 @@ def login_view(request) :
     else :
         return redirect('/')
 
-# def logout_view(request) :
-#     return 
+def logout_view(request) :
+    if request.user.is_authenticated:
+        logout(request)
+    return redirect('/')
 
 def signup_view(request) :
     return render(request, 'accounts/signup.html')   
