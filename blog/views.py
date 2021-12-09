@@ -3,6 +3,9 @@ from blog.models import Post,Comment
 from django.core.paginator import PageNotAnInteger, Paginator,EmptyPage,PageNotAnInteger
 from blog.forms import CommentForm
 from django.contrib import messages
+from django.shortcuts import redirect
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -49,11 +52,13 @@ def blog_single(request,pid) :
 
     posts= Post.objects.filter(status=1)            
     post = get_object_or_404(Post, pk=pid, status=1)
-    comments= Comment.objects.filter(post=post.id,approved=True).order_by('created_date')
-    form= CommentForm()
-    context={'post': post,'comments': comments,'form': form}
-    return render(request,"blog/blog-single.html",context)    
-
+    if not post.login_required :
+        comments= Comment.objects.filter(post=post.id,approved=True).order_by('created_date')
+        form= CommentForm()
+        context={'post': post,'comments': comments,'form': form}
+        return render(request,"blog/blog-single.html",context)    
+    else:
+        return HttpResponseRedirect(reverse('accounts:login'))
 def test(request) :
     posts= Post.objects.all()
     # # posts= Post.objects.filter(status=0)

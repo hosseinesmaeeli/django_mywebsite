@@ -14,7 +14,7 @@ class Post(models.Model):
     author = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
     # use set_nll to set null for deleted posts
     # null=true means : can be empty
-    
+    login_required = models.BooleanField(default=False)
     title = models.CharField(max_length=255)
     content = models.TextField()
     # tags = 
